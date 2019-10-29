@@ -39,21 +39,22 @@ Actually have more rights than users
 * Cntr + D - Send end of line character
 
 ### CMD
-* jobs -
+* jobs - display background processes
 * fg - set foreground
 * ps
 * pidof and pgrep
-* top
+* top - display all processes
 
 **SETSID - check man**
 
 ### Deamon
-They closed their stream IO and are optimized for background work
+They closed their stream IO and are optimized for background work, also are not
+associated with any terminals
 
 ### Thread vs Process
 * A process can have many threads
 * These thread share the memory of the process
-* The kernel schedular makes decision which threads can be exec parallel
+* The kernel scheduler makes decision which threads can be exec parallel
 
 ### Process security
 Done by ids - Check video for details

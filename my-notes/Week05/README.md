@@ -32,17 +32,18 @@ and the other columns are the parameters of it
 * Alt + F - readline() lib bind to go one word forward
 * Cntr + стрекличка - bash bind for the ^
 * Export
-* which
-* whoami
+* which - locates where command is stored
+* whoami - displays the current user
 * type
 * declare
+* printenv - self - explained
 * echo $$
 **Bash history is not a security механизъм**
 
 ### Enviromental vars vs bash vars
-When starting a new process:
-* Env vars are inherited
-* Bash vars are not
+When starting a new shell process:
+* Env vars are inherited, they are gather by the root shell after system boot
+* Bash vars are not - they just the vars in the current running shell process
 
 ### $PS1, $PS2, $PS3 and $PS4 - check video
 
@@ -67,8 +68,68 @@ Making long command to have a shortcuts
 * /home/stoefff/.bashrc
 **rc - run command**
 
+
+### Command line arguments
+Starting new shell session foo.sh arg1 arg2 gives us two arguments
+The arguments can be access by shell with $0 - foo, $1 - arg1, $2 - arg2
+
+### Special symbols
+* `$` - variable(maybe more like its value)
+* `$0 - $n` - the cmd arguments passed
+* `$#` - number of arguments
+* `$@` - list with all the parameters
+* `$?` - the return status of the last executed program
+* Default Env vars
+
+### Enviromental variable
+* `$PATH` Executable search path
+* `$PWD` Path to current working directory
+* `$TERM` Login terminal type (vt100,xterm)
+* `$SHELL` Path to login shell (/bin/sh)
+* `$HOME` Path to home directory (/home/foo)
+* `$USER` Username of user
+* `$DISPLAYX` display name (station2:0.0)
+* `$EDITOR` Name of default editor (ex)
+* `$VISUAL` Name of visual editor (vi)
+
+### Constructs
+* And list  - `cmd1 && cmd2` - executes continues if the current cmd returns 0
+* Or list - `cmd1 || cmd2` - executes continues if the current cmd return !0
+* test - `test EXPRESSION [EXPRESSIONS]`
+* if statement - `if ... then ... elif ... else ... fi` - **Do NOT miss fi**
+* case - `case .. pattern1) .. pattern2).. * ) .default. esac`
+* for loops
+** `for VAR in 1 2 3 do .. done`
+** `for ((EXP1 , EXP2, EXP2)) do .. done`
+** break and continue are supported
+* while loops - `while [condition] do .. done`
+
+**(command1; command2; command3;) - The parentheses are threated as a subshell**
+
+### Process substitution and file descriptors
+* <(cmd) - refer by filename to process output
+* >(cmd) - refer by filename to process input - what?
+* command < input.in - pass the input.in as a input of the command
+* command > output.out - write the output of the command in the output.out file
+* read a b c < <(echo "one two three")
+
+### Piping
+* cmd1 | cmd2 - cmd2 output will be passed as input of cmd1
+
+### Substitutions -  : :
+* Front - `#*`
+* Rear - `%%.*`
+* Regex - //
+
+### Functions
+Syntax: function_name () {command...}
+
+### Expansions
+* Parameter
+* Globe
+
 ### Bash scripts - check video
-* Alias or just vars
+* Alias or just var
 * Glob expansion
 * Base expansions - like list with a lot of added functionality
 * Functions
@@ -91,6 +152,7 @@ Making long command to have a shortcuts
 **Bash scripts with more than 100 line of code, should be written in other
 scripting lan - perl, python**
 
+
 ### @ vs * in expansions
 * * is interepretesd as a whole thing
 * @ gets us all the elements
@@ -98,4 +160,4 @@ scripting lan - perl, python**
 ### Piping orientation
 * Left to right evaluation
 * But because all thing or the right are completed in subshells, the return
-is that of the thing on the right 
+is that of the thing on the right

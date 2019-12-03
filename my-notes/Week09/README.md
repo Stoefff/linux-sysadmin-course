@@ -37,3 +37,7 @@ and with kissnet cmd we can even get the name for about 20 mins
 * vlan listing is complex: chech /proc/net/vlan/config
 
 ### Bridging/Switching
+
+### Bonding interface
+
+**Check the hackman video for more info about HW1 and the usage of iproute**

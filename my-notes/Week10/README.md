@@ -101,3 +101,5 @@ apt update - apt is not dependent that much on the internet**
 ### Remove vs purge
 * remove - deletes the package but leaves the configuration
 * purge - deletes everything - and package and all of its configurations
+
+**Never install with wget | bash**

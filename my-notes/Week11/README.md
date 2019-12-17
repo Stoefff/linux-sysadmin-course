@@ -9,6 +9,8 @@
 * RedHat and CentOS use this
 * Chech man
 
+**Hostname - 
+
 ### DNS servers - bind server
 * Slightly easy to build form source xD
 * After every url there is a dot that every tool places for us
